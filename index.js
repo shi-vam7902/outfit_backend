@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 app.listen(PORT,()=>{
     console.log("Server Started on port 3000");
 })
-mongoose.connect("mongodb://127.0.0.1/27017/", {
+mongoose.connect("mongodb+srv://root:root@cluster0.fsjkio0.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     keepAlive: true,
