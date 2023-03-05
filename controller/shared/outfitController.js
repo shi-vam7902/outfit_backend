@@ -1,19 +1,19 @@
-const supplierSchema = require("../../model/supplier/supplierModel");
-exports.addSupplier = (req, res) => {
-  const supplier = new supplierSchema(req.body);
-  supplier.save((err, data) => {
+const outfitSchema = require("../../model/shared/outfitModel");
+exports.addOutfit = (req, res) => {
+  const outfits = new outfitSchema(req.body);
+  outfits.save((err, data) => {
     if (err) {
       console.log(err);
     } else {
       res.status(201).json({
-        message: "Supplier Added",
+        message: "outfit Added",
         data: data,
       });
     }
   });
 };
-exports.getAllSupplier = (req, res) => {
- supplierSchema.find((err, data) => {
+exports.getAllOutfits = (req, res) => {
+  outfitSchema.find((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",
@@ -26,34 +26,31 @@ exports.getAllSupplier = (req, res) => {
     }
   });
 };
-exports.deleteSupplierById = (req, res) => {
-//   var id = req.params.id;
+exports.deleteOutfitById = (req, res) => {
   console.log(req.params.id);
 
-  supplierSchema.findByIdAndDelete(req.params.id, (err, data) => {
+  outfitSchema.findByIdAndDelete(req.params.id, (err, data) => {
     if (err) {
       console.log(err);
       res.status(401).json({
-        message: "Supplier not deleted",
+        message: "outfit not deleted",
         error: err,
       });
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Deleted",
+          message: "outfit Deleted",
         });
       } else {
         res.status(404).json({
-          message: "Supplier Not Found",
+          message: "outfit Not Found",
         });
       }
     }
   });
 };
-exports.updateSupplierbyId = (req, res) => {
-  
-
-  supplierSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+exports.updateOutfitbyId = (req, res) => {
+  outfitSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
         message: "Some thing went wrong",
@@ -61,7 +58,7 @@ exports.updateSupplierbyId = (req, res) => {
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Updated",
+          message: "outfit Updated",
           data: data,
         });
       }

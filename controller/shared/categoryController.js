@@ -1,19 +1,19 @@
-const supplierSchema = require("../../model/supplier/supplierModel");
-exports.addSupplier = (req, res) => {
-  const supplier = new supplierSchema(req.body);
-  supplier.save((err, data) => {
+const categorySchema = require("../../model/shared/categoryModel");
+exports.addCategory = (req, res) => {
+  const categories = new categorySchema(req.body);
+  categories.save((err, data) => {
     if (err) {
       console.log(err);
     } else {
       res.status(201).json({
-        message: "Supplier Added",
+        message: "category Added",
         data: data,
       });
     }
   });
 };
-exports.getAllSupplier = (req, res) => {
- supplierSchema.find((err, data) => {
+exports.getAllCategories = (req, res) => {
+  categorySchema.find((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",
@@ -26,34 +26,31 @@ exports.getAllSupplier = (req, res) => {
     }
   });
 };
-exports.deleteSupplierById = (req, res) => {
-//   var id = req.params.id;
-  console.log(req.params.id);
+exports.deleteCategoryById = (req, res) => {
+ console.log(req.params.id);
 
-  supplierSchema.findByIdAndDelete(req.params.id, (err, data) => {
+  categorySchema.findByIdAndDelete(req.params.id, (err, data) => {
     if (err) {
       console.log(err);
       res.status(401).json({
-        message: "Supplier not deleted",
+        message: "category not deleted",
         error: err,
       });
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Deleted",
+          message: "category Deleted",
         });
       } else {
         res.status(404).json({
-          message: "Supplier Not Found",
+          message: "category Not Found",
         });
       }
     }
   });
 };
-exports.updateSupplierbyId = (req, res) => {
-  
-
-  supplierSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+exports.updateCategorybyId = (req, res) => {
+  categorySchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
         message: "Some thing went wrong",
@@ -61,7 +58,7 @@ exports.updateSupplierbyId = (req, res) => {
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Updated",
+          message: "category Updated",
           data: data,
         });
       }

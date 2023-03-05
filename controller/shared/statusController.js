@@ -1,19 +1,24 @@
-const supplierSchema = require("../../model/supplier/supplierModel");
-exports.addSupplier = (req, res) => {
-  const supplier = new supplierSchema(req.body);
-  supplier.save((err, data) => {
+const statusSchema = require("../../model/shared/statusModel");
+exports.addStatus = (req, res) => {
+  const statuses = new statusSchema(req.body);
+  statuses.save((err, data) => {
     if (err) {
+
       console.log(err);
+      res.status(401).json({
+        messge:"Status Not Added",
+        data:data
+      })
     } else {
       res.status(201).json({
-        message: "Supplier Added",
+        message: "status Added",
         data: data,
       });
     }
   });
 };
-exports.getAllSupplier = (req, res) => {
- supplierSchema.find((err, data) => {
+exports.getAllStatuses = (req, res) => {
+  statusSchema.find((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",
@@ -26,34 +31,34 @@ exports.getAllSupplier = (req, res) => {
     }
   });
 };
-exports.deleteSupplierById = (req, res) => {
-//   var id = req.params.id;
+exports.deleteStatusById = (req, res) => {
+  
   console.log(req.params.id);
 
-  supplierSchema.findByIdAndDelete(req.params.id, (err, data) => {
+  statusSchema.findByIdAndDelete(req.params.id, (err, data) => {
     if (err) {
       console.log(err);
       res.status(401).json({
-        message: "Supplier not deleted",
+        message: "status not deleted",
         error: err,
       });
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Deleted",
+          message: "status Deleted",
         });
       } else {
         res.status(404).json({
-          message: "Supplier Not Found",
+          message: "status Not Found",
         });
       }
     }
   });
 };
-exports.updateSupplierbyId = (req, res) => {
+exports.updateStatusbyId = (req, res) => {
   
 
-  supplierSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+  statusSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
         message: "Some thing went wrong",
@@ -61,7 +66,7 @@ exports.updateSupplierbyId = (req, res) => {
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Updated",
+          message: "status Updated",
           data: data,
         });
       }
