@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const roleSchema = Schema(
+const statusSchema = Schema(
   {
-    roleName: {
+    statusName: {
       type: String,
       required: true,
     }
@@ -11,4 +11,4 @@ const roleSchema = Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model("roles",roleSchema)
+module.exports = mongoose.model("statuses",statusSchema)

@@ -1,19 +1,24 @@
-const roleSchema = require("../model/roleModel");
-exports.addrole = (req, res) => {
-  const roles = new roleSchema(req.body);
-  roles.save((err, data) => {
+const statusSchema = require("../../model/shared/statusModel");
+exports.addStatus = (req, res) => {
+  const statuses = new statusSchema(req.body);
+  statuses.save((err, data) => {
     if (err) {
+
       console.log(err);
+      res.status(401).json({
+        messge:"Status Not Added",
+        data:data
+      })
     } else {
       res.status(201).json({
-        message: "Role Added",
+        message: "status Added",
         data: data,
       });
     }
   });
 };
-exports.getAllRoles = (req, res) => {
-  roleSchema.find((err, data) => {
+exports.getAllStatuses = (req, res) => {
+  statusSchema.find((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",
@@ -26,34 +31,34 @@ exports.getAllRoles = (req, res) => {
     }
   });
 };
-exports.deleteRoleById = (req, res) => {
-  var id = req.params.id;
-  console.log(id);
+exports.deleteStatusById = (req, res) => {
+  
+  console.log(req.params.id);
 
-  roleSchema.findByIdAndDelete(id, (err, data) => {
+  statusSchema.findByIdAndDelete(req.params.id, (err, data) => {
     if (err) {
       console.log(err);
       res.status(401).json({
-        message: "Role not deleted",
+        message: "status not deleted",
         error: err,
       });
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Role Deleted",
+          message: "status Deleted",
         });
       } else {
         res.status(404).json({
-          message: "Role Not Found",
+          message: "status Not Found",
         });
       }
     }
   });
 };
-exports.updateRolebyId = (req, res) => {
+exports.updateStatusbyId = (req, res) => {
   
 
-  roleSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+  statusSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
         message: "Some thing went wrong",
@@ -61,7 +66,7 @@ exports.updateRolebyId = (req, res) => {
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Role Updated",
+          message: "status Updated",
           data: data,
         });
       }
