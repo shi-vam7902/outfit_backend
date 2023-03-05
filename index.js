@@ -5,6 +5,18 @@ const mongoose = require("mongoose");
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+<<<<<<< HEAD
+//routes 
+const sizeRoutes = require('./Routes/shared/sizeRoutes')
+const orderRoutes = require('./Routes/shared/orderRoutes')
+const brandRoutes = require('./Routes/shared/brandRoutes')
+const colorsRoutes = require('./Routes/shared/colorsRoutes')
+const materialRoutes = require('./Routes/shared/materialRoutes')
+const occasionRoutes = require('./Routes/shared/occasionRoutes')
+const patternsRoutes = require('./Routes/shared/patternsRoutes')
+const sleevesRoutes = require('./Routes/shared/sleevesRoutes')
+const styleRoutes = require('./Routes/shared/styleRoutes')
+=======
 // const URI = process.env.URI || "mongodb://127.0.0.1:27017/outfits"
 app.listen(PORT, () => {
   console.log("Server Started on port 3000");
@@ -43,15 +55,37 @@ mongoose.connect("mongodb+srv://root:root@cluster0.qzotymx.mongodb.net/outfits",
     useUnifiedTopology: true,
     keepAlive: true,
     socketTimeoutMS: 30000,
+>>>>>>> 40a4c705af900ddb96492a5f04961d7902dfacea
 
-}, (err) => {
+
+
+ //url routes
+app.use("/order",orderRoutes)
+app.use("/brand",brandRoutes)
+app.use("/color",colorsRoutes)
+app.use("/material",materialRoutes)
+app.use("/occasion",occasionRoutes)
+app.use("/pattern",patternsRoutes)
+app.use("/sleeve",sleevesRoutes)
+app.use("/style",styleRoutes)
+ 
+
+
+//server
+app.listen(PORT,(err)=>{
+    if(err){
+        console.log("Server Not Started",err);
+    }else{
+        console.log("Server Started on port ",PORT);
+    }
+})
+
+//database
+mongoose.connect('mongodb+srv://amit:Amit1324@cluster0.sxuwjh9.mongodb.net/outfits?retryWrites=true&w=majority', (err) => {
     if (err) {
-        console.log(err);
-        console.log("Error Connecting db");
+        console.log("Database Not Connected..");
+    } else {
+        console.log("Database Connected..");
     }
-    else {
-        console.log(" Cluster Created ->  Connection Established");
-    }
-
 })
 
