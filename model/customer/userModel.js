@@ -1,17 +1,28 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const supplierSchema = new Schema(
+const userSchema = new Schema(
   {
-    supplierName: {
-      type: String,
-      // required: true,
-    },
     roleId: {
       type: Schema.Types.ObjectId,
       ref: "roles",
     },
-    gstNo: {
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    emailId: {
+      type: String,
+    },
+    password: {
+      type: String,
+    },
+    phoneNo: {
       type: Number,
+    },
+    gender: {
+      type: String,
     },
     addressId: [
       {
@@ -28,4 +39,4 @@ const supplierSchema = new Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model("suppliers", supplierSchema);
+module.exports = mongoose.model("users", userSchema);

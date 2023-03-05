@@ -1,19 +1,19 @@
-const supplierSchema = require("../../model/supplier/supplierModel");
-exports.addSupplier = (req, res) => {
-  const supplier = new supplierSchema(req.body);
-  supplier.save((err, data) => {
+const roleSchema = require("../model/roleModel");
+exports.addrole = (req, res) => {
+  const roles = new roleSchema(req.body);
+  roles.save((err, data) => {
     if (err) {
       console.log(err);
     } else {
       res.status(201).json({
-        message: "Supplier Added",
+        message: "Role Added",
         data: data,
       });
     }
   });
 };
-exports.getAllSupplier = (req, res) => {
- supplierSchema.find((err, data) => {
+exports.getAllRoles = (req, res) => {
+  roleSchema.find((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",
@@ -26,34 +26,34 @@ exports.getAllSupplier = (req, res) => {
     }
   });
 };
-exports.deleteSupplierById = (req, res) => {
-//   var id = req.params.id;
-  console.log(req.params.id);
+exports.deleteRoleById = (req, res) => {
+  var id = req.params.id;
+  console.log(id);
 
-  supplierSchema.findByIdAndDelete(req.params.id, (err, data) => {
+  roleSchema.findByIdAndDelete(id, (err, data) => {
     if (err) {
       console.log(err);
       res.status(401).json({
-        message: "Supplier not deleted",
+        message: "Role not deleted",
         error: err,
       });
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Deleted",
+          message: "Role Deleted",
         });
       } else {
         res.status(404).json({
-          message: "Supplier Not Found",
+          message: "Role Not Found",
         });
       }
     }
   });
 };
-exports.updateSupplierbyId = (req, res) => {
+exports.updateRolebyId = (req, res) => {
   
 
-  supplierSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+  roleSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
         message: "Some thing went wrong",
@@ -61,7 +61,7 @@ exports.updateSupplierbyId = (req, res) => {
     } else {
       if (data != null || data != undefined) {
         res.status(200).json({
-          message: "Supplier Updated",
+          message: "Role Updated",
           data: data,
         });
       }
