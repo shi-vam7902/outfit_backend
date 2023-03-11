@@ -1,4 +1,5 @@
 const customerFeedBackSchema = require("../../model/customer/customerFeedBackModel");
+//add feedback
 exports.addCustomerFeedBack = (req, res) => {
   console.log("....", req.body);
 
@@ -34,10 +35,10 @@ exports.getAllCustomerFeedBacks = (req, res) => {
     }
   });
 };
-
+//delete by id
 exports.deleteCustomerFeedBackById = (req, res) => {
   console.log("indelete by id");
-  
+
   console.log(req.params.id);
 
   customerFeedBackSchema.findByIdAndDelete(req.params.id, (err, data) => {
@@ -59,9 +60,8 @@ exports.deleteCustomerFeedBackById = (req, res) => {
     }
   });
 };
-
+// get by id
 exports.getCustomerFeedBackById = (req, res) => {
-  
   console.log(req.params.id);
   customerFeedBackSchema.findById(req.params.id, (err, data) => {
     if (err) {
@@ -77,19 +77,39 @@ exports.getCustomerFeedBackById = (req, res) => {
     }
   });
 };
+// update by id
 exports.updateCustomerFeedBackbyId = (req, res) => {
-  customerFeedBackSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+  customerFeedBackSchema.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err, data) => {
+      if (err) {
+        res.status(400).json({
+          message: "Some thing went wrong",
+        });
+      } else {
+        if (data != null || data != undefined) {
+          res.status(200).json({
+            message: "customerFeedBack Updated",
+            data: data,
+          });
+        }
+      }
+    }
+  );
+};
+//feedBack By Id
+exports.getFeedBackById = (req, res) => {
+  customerFeedBackSchema.findById(req.params.id, (err, data) => {
     if (err) {
-      res.status(400).json({
-        message: "Some thing went wrong",
+      res.status(401).json({
+        message: err.message,
       });
     } else {
-      if (data != null || data != undefined) {
-        res.status(200).json({
-          message: "customerFeedBack Updated",
-          data: data,
-        });
-      }
+      res.status(200).json({
+        message: "Feedback retrieve successfully",
+        data: data,
+      });
     }
   });
 };

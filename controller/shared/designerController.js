@@ -5,9 +5,9 @@ exports.addDesigner = (req, res) => {
     if (err) {
       console.log(err);
       res.status(401).json({
-        messge:"Designer Not Added",
-        data:data
-      })
+        messge: "Designer Not Added",
+        data: data,
+      });
     } else {
       res.status(201).json({
         message: "designer Added",
@@ -66,6 +66,20 @@ exports.updateDesignerbyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+exports.getDesignerById = (req, res) => {
+  designerSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "designer retrieve successfully",
+        data: data,
+      });
     }
   });
 };

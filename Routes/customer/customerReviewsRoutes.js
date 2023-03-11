@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const customerReviewController = require('../../controller/customer/customerReviewController')
-router.post("/addcustreview",customerReviewController.addCustomerReview)
-router.put("/updatecustreview/:id",customerReviewController.updateCustomerReviewbyId)
-router.get("/getfeedbacks",customerReviewController.getAllCustomerReviews)
-router.delete("/deletefeedback/:id",customerReviewController.deleteCustomerReviewById)
+router.post("/review",customerReviewController.addCustomerReview)
+router.put("/review/:id",customerReviewController.updateCustomerReviewbyId)
+router.get("/review",customerReviewController.getAllCustomerReviews)
+router.get("/review/:id",customerReviewController.getReviewById)
+router.delete("/review/:id",customerReviewController.deleteCustomerReviewById)
 module.exports = router 

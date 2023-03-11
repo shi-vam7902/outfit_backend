@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const addressController = require('../../controller/shared/addressController')
-router.post("/add",addressController.addAddress)
-router.put("/updateadd/:id",addressController.updateAddressbyId)
-router.get("/getadds",addressController.getAllAddress)
-router.delete("/deleteadd/:id",addressController.deleteAddressById)
+router.post("/address",addressController.addAddress)
+router.put("/address/:id",addressController.updateAddressbyId)
+router.get("/address",addressController.getAllAddress)
+router.get("/address/:id",addressController.getAddressById)
+router.delete("/address/:id",addressController.deleteAddressById)
 module.exports = router 

@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const subCategoryController = require('../../controller/shared/subCategoryController')
-router.post("/addsubcat",subCategoryController.addSubCategory)
-router.put("/updatesubcat/:id",subCategoryController.updateSubCategorybyId)
-router.get("/getsubcats",subCategoryController.getAllSubCategories)
-router.delete("/deletesubcats/:id",subCategoryController.deleteSubCategoryById)
+router.post("/subcat",subCategoryController.addSubCategory)
+router.put("/subcat/:id",subCategoryController.updateSubCategorybyId)
+router.get("/subcat",subCategoryController.getAllSubCategories)
+router.get("/subcat/:id",subCategoryController.getAllSubCategoriesById)
+router.delete("/subcat/:id",subCategoryController.deleteSubCategoryById)
 module.exports = router 

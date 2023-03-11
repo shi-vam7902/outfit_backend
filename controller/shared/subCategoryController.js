@@ -65,3 +65,17 @@ exports.updateSubCategorybyId = (req, res) => {
     }
   });
 };
+exports.getAllSubCategoriesById = (req, res) => {
+  subCategorySchema.findById(req.params.id,(err,data)=>{
+      if(err){
+          res.status(401).json({
+                  message :err.message
+          })
+      }else{
+          res.status(200).json({
+                  message: "Feedback retrieve successfully",
+                  data:data
+          })
+      }
+  })
+}

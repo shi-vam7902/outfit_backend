@@ -3,12 +3,11 @@ exports.addStatus = (req, res) => {
   const statuses = new statusSchema(req.body);
   statuses.save((err, data) => {
     if (err) {
-
       console.log(err);
       res.status(401).json({
-        messge:"Status Not Added",
-        data:data
-      })
+        messge: "Status Not Added",
+        data: data,
+      });
     } else {
       res.status(201).json({
         message: "status Added",
@@ -32,7 +31,6 @@ exports.getAllStatuses = (req, res) => {
   });
 };
 exports.deleteStatusById = (req, res) => {
-  
   console.log(req.params.id);
 
   statusSchema.findByIdAndDelete(req.params.id, (err, data) => {
@@ -56,8 +54,6 @@ exports.deleteStatusById = (req, res) => {
   });
 };
 exports.updateStatusbyId = (req, res) => {
-  
-
   statusSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
@@ -70,6 +66,20 @@ exports.updateStatusbyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+exports.getStatusById = (req, res) => {
+  statusSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "status retrieve successfully",
+        data: data,
+      });
     }
   });
 };

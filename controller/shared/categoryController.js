@@ -27,7 +27,7 @@ exports.getAllCategories = (req, res) => {
   });
 };
 exports.deleteCategoryById = (req, res) => {
- console.log(req.params.id);
+  console.log(req.params.id);
 
   categorySchema.findByIdAndDelete(req.params.id, (err, data) => {
     if (err) {
@@ -62,6 +62,20 @@ exports.updateCategorybyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+exports.getCategoryById = (req, res) => {
+  categorySchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "Category retrieve successfully",
+        data: data,
+      });
     }
   });
 };
