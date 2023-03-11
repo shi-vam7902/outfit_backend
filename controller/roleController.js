@@ -51,8 +51,6 @@ exports.deleteRoleById = (req, res) => {
   });
 };
 exports.updateRolebyId = (req, res) => {
-  
-
   roleSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {
       res.status(500).json({
@@ -65,6 +63,20 @@ exports.updateRolebyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+exports.getRoleById = (req, res) => {
+  roleSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "Feedback retrieve successfully",
+        data: data,
+      });
     }
   });
 };

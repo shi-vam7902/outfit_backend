@@ -37,7 +37,7 @@ exports.getAllCarts = (req, res) => {
 
 exports.deleteCartById = (req, res) => {
   console.log("indelete by id");
-  
+
   console.log(req.params.id);
 
   cartSchema.findByIdAndDelete(req.params.id, (err, data) => {
@@ -61,7 +61,6 @@ exports.deleteCartById = (req, res) => {
 };
 
 exports.getCartById = (req, res) => {
-  
   console.log(req.params.id);
   cartSchema.findById(req.params.id, (err, data) => {
     if (err) {
@@ -90,6 +89,20 @@ exports.updateCartbyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+exports.getCartById = (req, res) => {
+  cartSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "cart retrieve successfully",
+        data: data,
+      });
     }
   });
 };

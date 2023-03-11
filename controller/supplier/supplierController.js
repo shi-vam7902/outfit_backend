@@ -68,3 +68,17 @@ exports.updateSupplierbyId = (req, res) => {
     }
   });
 };
+exports.getSupplierById = (req, res) => {
+  supplierSchema.findById(req.params.id,(err,data)=>{
+      if(err){
+          res.status(401).json({
+                  message :err.message
+          })
+      }else{
+          res.status(200).json({
+                  message: "supplier retrieve successfully",
+                  data:data
+          })
+      }
+  })
+}

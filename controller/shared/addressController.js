@@ -9,6 +9,7 @@ exports.addAddress = (req, res) => {
         message: "address Added",
         data: data,
       });
+      console.log(data);
     }
   });
 };
@@ -62,6 +63,20 @@ exports.updateAddressbyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+exports.getAddressById = (req, res) => {
+  addressSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "Address retrieve successfully",
+        data: data,
+      });
     }
   });
 };

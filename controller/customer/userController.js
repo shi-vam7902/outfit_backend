@@ -37,7 +37,7 @@ exports.getAllUsers = (req, res) => {
 
 exports.deleteUserById = (req, res) => {
   console.log("indelete by id");
-  
+
   console.log(req.params.id);
 
   userSchema.findByIdAndDelete(req.params.id, (err, data) => {
@@ -61,7 +61,6 @@ exports.deleteUserById = (req, res) => {
 };
 
 exports.getUserById = (req, res) => {
-  
   console.log(req.params.id);
   userSchema.findById(req.params.id, (err, data) => {
     if (err) {
@@ -90,6 +89,21 @@ exports.updateUserbyId = (req, res) => {
           data: data,
         });
       }
+    }
+  });
+};
+//feedBack By Id
+exports.getUserById = (req, res) => {
+  userSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "User retrieve successfully",
+        data: data,
+      });
     }
   });
 };

@@ -37,7 +37,7 @@ exports.getAllCustomerReviews = (req, res) => {
 
 exports.deleteCustomerReviewById = (req, res) => {
   console.log("indelete by id");
-  
+
   console.log(req.params.id);
 
   customerReviewSchema.findByIdAndDelete(req.params.id, (err, data) => {
@@ -61,7 +61,6 @@ exports.deleteCustomerReviewById = (req, res) => {
 };
 
 exports.getCustomerReviewById = (req, res) => {
-  
   console.log(req.params.id);
   customerReviewSchema.findById(req.params.id, (err, data) => {
     if (err) {
@@ -78,20 +77,24 @@ exports.getCustomerReviewById = (req, res) => {
   });
 };
 exports.updateCustomerReviewbyId = (req, res) => {
-  customerReviewSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
-    if (err) {
-      res.status(400).json({
-        message: "Some thing went wrong",
-      });
-    } else {
-      if (data != null || data != undefined) {
-        res.status(200).json({
-          message: "customerReview Updated",
-          data: data,
+  customerReviewSchema.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err, data) => {
+      if (err) {
+        res.status(400).json({
+          message: "Some thing went wrong",
         });
+      } else {
+        if (data != null || data != undefined) {
+          res.status(200).json({
+            message: "customerReview Updated",
+            data: data,
+          });
+        }
       }
     }
-  });
+  );
 };
 
 // exports.insertBulk = (req, res) => {
@@ -109,3 +112,18 @@ exports.updateCustomerReviewbyId = (req, res) => {
 //     }
 //   });
 // };
+//feedBack By Id
+exports.getReviewById = (req, res) => {
+  customerReviewSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "Review retrieve successfully",
+        data: data,
+      });
+    }
+  });
+};

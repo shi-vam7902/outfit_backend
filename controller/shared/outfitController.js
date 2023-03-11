@@ -65,3 +65,17 @@ exports.updateOutfitbyId = (req, res) => {
     }
   });
 };
+exports.getOutfitById = (req, res) => {
+  outfitSchema.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: err.message,
+      });
+    } else {
+      res.status(200).json({
+        message: "OutFit retrieve successfully",
+        data: data,
+      });
+    }
+  });
+};
