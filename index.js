@@ -1,11 +1,14 @@
 const express = require("express");
+const cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
-
+ 
+ 
 //routes 
 const sizeRoutes = require('./Routes/shared/sizeRoutes')
 const orderRoutes = require('./Routes/shared/orderRoutes')
@@ -28,7 +31,12 @@ const cartRoutes = require('./Routes/shared/cartRoutes')
 const customerFeedBackRoutes = require('./Routes/customer/customerFeedBackRoutes')
 const customerReviewRoutes = require('./Routes/customer/customerReviewsRoutes')
 const designerRoutes =require('./Routes/shared/designerRoutes')
+const AdminRoutes = require('./Routes/admin/adminRoutes') 
 
+
+
+ //routes
+app.use("/size", sizeRoutes)
 app.use("/order",orderRoutes)
 app.use("/brand",brandRoutes)
 app.use("/color",colorsRoutes)
@@ -48,7 +56,8 @@ app.use("/subcategories",subcategoryRoutes)//8
 app.use("/carts",cartRoutes)//9
 app.use("/feedbacks",customerFeedBackRoutes)//10
 app.use("/reviews",customerReviewRoutes)//11
-app.use("/designer",designerRoutes)//12
+app.use("/designer",designerRoutes)
+app.use("/admin",AdminRoutes)
 
 //server
 app.listen(PORT,(err)=>{

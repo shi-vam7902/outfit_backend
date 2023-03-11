@@ -52,7 +52,7 @@ exports.GetColorById = (req, res) => {
 }
 //update color
 exports.UpdateColor = (req, res) => {
-        colorModel.findById(req.params.id,req.body,(err,data)=>{
+        colorModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message

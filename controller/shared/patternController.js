@@ -52,7 +52,7 @@ exports.GetPatternById = (req, res) => {
 }
 //update pattern
 exports.UpdatePattern = (req, res) => {
-        patternModel.findById(req.params.id,req.body,(err,data)=>{
+        patternModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message

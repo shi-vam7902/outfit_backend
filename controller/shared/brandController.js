@@ -52,7 +52,7 @@ exports.GetBrandById = (req, res) => {
 }
 //update brand
 exports.UpdateBrand = (req, res) => {
-        brandModel.findById(req.params.id,req.body,(err,data)=>{
+        brandModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message
