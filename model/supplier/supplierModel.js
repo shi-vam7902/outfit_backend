@@ -11,7 +11,7 @@ const supplierSchema = new Schema(
       ref: "roles",
     },
     gstNo: {
-      type: Number,
+      type: String,
     },
     addressId: [
       {

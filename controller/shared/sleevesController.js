@@ -52,7 +52,7 @@ exports.GetSleeveById = (req, res) => {
 }
 //update sleeve
 exports.UpdateSleeve = (req, res) => {
-        sleeveModel.findById(req.params.id,req.body,(err,data)=>{
+        sleeveModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message

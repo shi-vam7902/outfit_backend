@@ -52,7 +52,7 @@ exports.GetOrderById = (req, res) => {
 }
 //update order
 exports.UpdateOrder = (req, res) => {
-        orderModel.findById(req.params.id,req.body,(err,data)=>{
+        orderModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message

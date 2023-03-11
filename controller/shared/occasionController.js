@@ -52,7 +52,7 @@ exports.GetOccasionById = (req, res) => {
 }
 //update occasion
 exports.UpdateOccasion = (req, res) => {
-        occasionModel.findById(req.params.id,req.body,(err,data)=>{
+        occasionModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message

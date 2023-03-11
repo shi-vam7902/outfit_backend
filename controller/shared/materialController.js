@@ -52,7 +52,7 @@ exports.GetMaterialById = (req, res) => {
 }
 //update material
 exports.UpdateMaterial = (req, res) => {
-        materialModel.findById(req.params.id,req.body,(err,data)=>{
+        materialModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message
