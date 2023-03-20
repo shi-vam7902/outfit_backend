@@ -61,7 +61,12 @@ const outfitSchema = new Schema({
     },
     noOfDays:{
         type:Date
-    }
+    },
+    imageId:{
+        type: Schema.Types.ObjectId,
+        ref:'image'
+    },
+
     
     
 },

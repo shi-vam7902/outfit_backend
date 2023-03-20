@@ -7,4 +7,4 @@ const sleeveValidation  = zod.object({
     })
 })
 
-module.exports  = brandValidation
+module.exports  = sleeveValidation

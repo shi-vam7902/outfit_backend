@@ -1,6 +1,6 @@
 const adminModel = require('../../model/admin/adminModel');
 const bcrypt = require('bcrypt');
-
+const generateToken = require('../../util/token/generateToken')
 //add admin
 exports.AddAdmin = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
@@ -21,10 +21,15 @@ exports.AddAdmin = (req, res) => {
                 message: err.message
             })
         } else {
-            res.status(200).json({
-                message: "Admin Added successfully",
-                message: data
-            })
+            if (data != null || data != undefined) {
+                const token = generateToken.generateToken(data);
+                console.log(token);
+                res.status(200).json({
+                    message: "Admin Added successfully",
+                    message: data,
+                    token:token
+                })
+            }
         }
     })
 }
@@ -122,9 +127,12 @@ exports.LoginAdmin = (req, res) => {
         } else {
             if (data) {
                 if (bcrypt.compareSync(req.body.password, data.password)) {
+                 
+                    const token = generateToken.generateToken(data);
                     res.status(200).json({
                         message: "Admin Login successfully",
-                        data: data
+                        data: data,
+                        token: token
                     })
                 }
                 else {

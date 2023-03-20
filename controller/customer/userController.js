@@ -11,11 +11,14 @@ exports.addUser = (req, res) => {
         error: err,
       });
     } else {
-      console.log(data);
+      if (data != null || data != undefined) {
+        const token = generateToken.generateToken(data);
       res.status(200).json({
-        message: "User Added Succesfully",
+        message: "User Added Successfully",
         data: data,
+        token: token
       });
+    }
     }
   });
 };

@@ -5,15 +5,19 @@ exports.addSupplier = (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.status(201).json({
-        message: "Supplier Added",
-        data: data,
-      });
+      if (data != null || data != undefined) {
+        const token = generateToken.generateToken(data);
+        res.status(200).json({
+          message: "Supplier Added",
+          data: data,
+          token: token
+        });
+      }
     }
   });
 };
 exports.getAllSupplier = (req, res) => {
- supplierSchema.find((err, data) => {
+  supplierSchema.find((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",
@@ -27,7 +31,7 @@ exports.getAllSupplier = (req, res) => {
   });
 };
 exports.deleteSupplierById = (req, res) => {
-//   var id = req.params.id;
+  //   var id = req.params.id;
   console.log(req.params.id);
 
   supplierSchema.findByIdAndDelete(req.params.id, (err, data) => {
@@ -51,7 +55,7 @@ exports.deleteSupplierById = (req, res) => {
   });
 };
 exports.updateSupplierbyId = (req, res) => {
-  
+
 
   supplierSchema.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (err) {

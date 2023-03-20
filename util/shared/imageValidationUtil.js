@@ -12,4 +12,4 @@ const imageValidation  = zod.object({
     })
 })
 
-module.exports  = AdminValidation
+module.exports  = imageValidation

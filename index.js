@@ -29,7 +29,8 @@ const cartRoutes = require('./Routes/shared/cartRoutes')
 const customerFeedBackRoutes = require('./Routes/customer/customerFeedBackRoutes')
 const customerReviewRoutes = require('./Routes/customer/customerReviewsRoutes')
 const designerRoutes =require('./Routes/shared/designerRoutes')
-const AdminRoutes = require('./Routes/admin/adminRoutes')
+const adminRoutes = require('./Routes/admin/adminRoutes')
+const imageRoutes = require('./Routes/shared/imageRoutes')
 
 
  //routes
@@ -54,7 +55,8 @@ app.use("/carts",cartRoutes)//9
 app.use("/feedbacks",customerFeedBackRoutes)//10
 app.use("/reviews",customerReviewRoutes)//11
 app.use("/designer",designerRoutes)
-app.use("/admin",AdminRoutes)
+app.use("/admin",adminRoutes)
+app.use("/image",imageRoutes)
 
 
 //server

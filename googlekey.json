@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "starry-battery-375114",
+  "private_key_id": "fb7162ab92a96f2545b96b9f0960d5a66c73201f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDDCu2CM8uawHNo\nYnT2t/9sRSuazLerO183dygwYCFtsZb/OM9ZuwmhcdvYMiPBFgmgJIbLfjt29EWV\njv6o/5JsUYEim7MTB3vGUaI8APmzcZJSjnTWjI8NsQ5t8bMt8vMCxl5MuMMmThDR\nSstrztyxLDboFGgrpxfggaVL8gTk4gCQ5EKZfcSGqqhXe8CQvUbFnZTIelpsFL0X\nG3DMzhxsk9EX6pO7akG1jp7d1hjgGwG5p6ERUFx5Rm7rRp7SX6uERlwc1iTRztPX\n1OpBF/saWyg8r0x/8JDpzNu4JgrsZ8RfvhjLyqqTHvzIbPkNX1JhZ1K8hTSLDzAW\nTUvDYpyRAgMBAAECggEACxuxuDMj+u3QBNdqquyCxxNPbvMO2Nk6TInkR5EKBlnR\nbDq7kHQ3EbNO3orIf4Q2SyEZbjiDwXwbBHAO7+gSWknwDV0Jv2EzOvHGSB2UGxSy\nTTJg1CFQOmrlk/xqhIjsLzHGCB+TubhDe/ADEuJGrm6CuAgFgMr08Kvhkqg3gCOH\nYcM0Ys9dqEAIh/hCwV0yhC9/+LuHiK67czpoAiJOkNsV8YRgq6ABWnHsA9NcKDjD\n3yczbXlmju2N/07246gOyDhuENSl1oTH/Knl5lGXt/1tHMXjUjjjn1JZJLp3x/g/\nLXxAoDKwIQ785CBFhmimICTcfkWQqvodTVtH36NMYwKBgQD5pCPoASn3kX+eyM3g\nMuhILVtORRhwRDAVku9HQPbWu6dVe4E4mtv7FsbDLjJMQbX6d5GYjwDXF6Vr0chm\nTzJ0eVoToiB7DgsuS2bokU7cWK2PUlLjZDToBHLdVHlZivLyJ6Z/Fs0BaaCQ/GrK\niuGfpNVnzLetYYaoqNhlu4O/nwKBgQDIAsMEwfn9EDZnR+l2fo0W6rLz4nGRhvhu\nuqyteFc1A2xXoVPo5VGuU6jKhb3umQzai5JgHdfELyz37einX+Ry3ZKWGgWfq8j2\nNdjKsxQMcC/ntT2TCqP5Q923iLQrDs6xqKXXeQZHwIOIxFmVyfsSiD087E0I7Orl\nxUa5UVl1zwKBgQC9aSHpPUDXW2kGU/uI+XculGNrrpdNTx9grxyn5o2i/byH6m5w\nQWdZSr3Ch8GYBF+Ly78HjrEnggR8Gy6/GaYBo7WJogCc/VnUZVeOa/n2y73cOa00\nZOqThBSXBCoSm4+b1iPI18byJG+0siBgzyFDnLBi0nwmrBGc1IdkIPNkpwKBgC9A\nj8hA94l02hV+ZMaM0VJXsl1x4vjJlUm7qm31H00z+NWfFI7SFoED3L2z6RJEcEf1\nb2hrxHzh1FLijvNz8Sm99RKnJSr6z6hzQjtpIVRq8LZiGCD0A5cxFGF213HQtr48\nJKoKOpSbA7g9AxkjNcDEFQuem/h+2GPePn4rnOH7AoGBAIqoIEqvPCrVPoQOHn/2\nfWDaFHMh7a7n/no2GTWudk7CtTL0lNPJMRruVMFCjtVGZ27iyHlWX+tjvFQ8v05r\nG0sXcXKs+dKo1p0eF3xnCAVbrZe6M5UQzpxm5krZODBZ6pzc1z+/m2n3td6PjV78\n9kHMxSz+f8xmsEx8REzgIkfA\n-----END PRIVATE KEY-----\n",
+  "client_email": "gdrive-service@starry-battery-375114.iam.gserviceaccount.com",
+  "client_id": "100721222062312366335",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gdrive-service%40starry-battery-375114.iam.gserviceaccount.com"
+}

@@ -7,4 +7,4 @@ const styleValidation  = zod.object({
     })
 })
 
-module.exports  = brandValidation
+module.exports  = styleValidation
