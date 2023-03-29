@@ -31,7 +31,7 @@ const customerReviewRoutes = require('./Routes/customer/customerReviewsRoutes')
 const designerRoutes =require('./Routes/shared/designerRoutes')
 const adminRoutes = require('./Routes/admin/adminRoutes')
 const imageRoutes = require('./Routes/shared/imageRoutes')
-
+const authTokenRoutes = require('./Routes/authTokenRoutes');
 
  //routes
 app.use("/size", sizeRoutes)
@@ -57,7 +57,7 @@ app.use("/reviews",customerReviewRoutes)//11
 app.use("/designer",designerRoutes)
 app.use("/admin",adminRoutes)
 app.use("/image",imageRoutes)
-
+app.use("/token" ,authTokenRoutes)  
 
 //server
 app.listen(PORT,(err)=>{

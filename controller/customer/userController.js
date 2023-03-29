@@ -1,4 +1,6 @@
 const userSchema = require("../../model/customer/userModel");
+const generateToken = require("../../util/token/generateToken");
+const mailer = require('../../util/mailer');
 exports.addUser = (req, res) => {
   console.log("....", req.body);
 
@@ -12,7 +14,10 @@ exports.addUser = (req, res) => {
       });
     } else {
       if (data != null || data != undefined) {
+
         const token = generateToken.generateToken(data);
+        mailer.sendMail(data.emailId);
+
       res.status(200).json({
         message: "User Added Successfully",
         data: data,

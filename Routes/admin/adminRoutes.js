@@ -11,6 +11,6 @@ router.get("/admin", tokenMiddleware.tokenMiddleware, AdminController.getAllAdmi
 router.get("/admin/:id", tokenMiddleware.tokenMiddleware, AdminController.getAdminById)
 router.delete("/admin/:id", tokenMiddleware.tokenMiddleware, AdminController.deleteAdmin)
 router.get("/admin/:id", tokenMiddleware.tokenMiddleware, AdminController.UpdateAdmin)
-router.get("/admin/login", tokenMiddleware.tokenMiddleware, AdminController.LoginAdmin)
+router.get("/ad/login",AdminController.LoginAdmin)
 
 module.exports = router;

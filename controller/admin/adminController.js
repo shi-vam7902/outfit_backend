@@ -1,6 +1,9 @@
 const adminModel = require('../../model/admin/adminModel');
 const bcrypt = require('bcrypt');
-const generateToken = require('../../util/token/generateToken')
+const generateToken = require('../../util/token/generateToken');
+const authTokenModel = require('../../model/authTokenModel');
+const generatePublicKey = require('../../util/generatePublicKey')
+
 //add admin
 exports.AddAdmin = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
@@ -23,17 +26,33 @@ exports.AddAdmin = (req, res) => {
         } else {
             if (data != null || data != undefined) {
                 const token = generateToken.generateToken(data);
-                console.log(token);
-                res.status(200).json({
-                    message: "Admin Added successfully",
-                    message: data,
-                    token:token
+                const obj = {
+                    token: token,
+                    user: data._id,
+                    secret: "secret",
+                    publicKey: generatePublicKey.generatePublicKey(16)
+
+                }
+                const tokenData = new authTokenModel(obj);
+                tokenData.save((err, data) => {
+                    if (err) {
+                        res.status(500).json({
+                            msg: "Error in Adding Admin"
+                        })
+                    } else {
+
+                        res.status(201).json({
+                            data: data,
+                            msg: "Data Added Successfully..",
+
+                        })
+                    }
                 })
             }
         }
     })
 }
-//get admins
+//Get admins
 exports.getAllAdmin = (req, res) => {
     adminModel.find().populate("role").exec((err, data) => {
         if (err) {
@@ -49,7 +68,7 @@ exports.getAllAdmin = (req, res) => {
         }
     })
 }
-//get Admin by Id
+//Get Admin by Id
 exports.getAdminById = (req, res) => {
     adminModel.findById(req.params.id).populate("role").exec((err, data) => {
         if (err) {
@@ -65,7 +84,7 @@ exports.getAdminById = (req, res) => {
         }
     })
 }
-//delete Admin
+//Delete Admin
 exports.deleteAdmin = (req, res) => {
     adminModel.findByIdAndDelete(req.params.id, (err, data) => {
         if (err) {
@@ -89,8 +108,7 @@ exports.BlockAdmin = (req, res) => {
                 message: err.message,
 
             })
-        }
-        else {
+        } else {
             return res.status(200).json({
                 message: "Admin blocked successfully",
 
@@ -106,8 +124,7 @@ exports.UpdateAdmin = (req, res) => {
                 message: err.message,
 
             })
-        }
-        else {
+        } else {
             return res.status(200).json({
                 message: "Admin Update successfully",
 
@@ -118,7 +135,6 @@ exports.UpdateAdmin = (req, res) => {
 //login Admin
 exports.LoginAdmin = (req, res) => {
     adminModel.findOne({ email: req.body.email }).populate("role").exec((err, data) => {
-
         if (err) {
             return res.status(400).json({
                 message: err.message,
@@ -127,12 +143,33 @@ exports.LoginAdmin = (req, res) => {
         } else {
             if (data) {
                 if (bcrypt.compareSync(req.body.password, data.password)) {
-                 
-                    const token = generateToken.generateToken(data);
-                    res.status(200).json({
-                        message: "Admin Login successfully",
-                        data: data,
-                        token: token
+
+                    const refreshToken = generateToken.generateToken(data);
+
+                    //Get The Token Data
+                    authTokenModel.findOne({ user: data._id }, (err, data) => {
+
+                        if (err) {
+                            return res.status(400).json({
+                                message: err.message,
+                            })
+                        } else {
+                            //Update Refresh Token
+                            authTokenModel.findByIdAndUpdate(data._id, { token: refreshToken }, (err, data) => {
+                                if (err) {
+                                    return res.status(400).json({
+                                        message: err.message,
+                                    })
+                                } else {
+                                    return res.status(200).json({
+                                        message: "Admin Login successfully",
+                                        token:refreshToken
+                                       
+                                    })
+                                }
+                            })
+
+                        }
                     })
                 }
                 else {

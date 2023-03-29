@@ -1,5 +1,7 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const authTokenModel = require('../../model/authTokenModel');
 const secret = "secret";
+
 
 //generateToken
 const generateToken = (user)=>{
@@ -14,6 +16,7 @@ const generateToken = (user)=>{
 const validateToken = (token)=>{
     try {
         const decodedToken = jwt.verify(token, secret);
+        
         return decodedToken;
     } catch (err) {
         return null;        
