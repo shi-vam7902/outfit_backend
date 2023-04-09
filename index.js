@@ -44,7 +44,7 @@ app.use("/pattern",patternsRoutes)
 app.use("/sleeve",sleevesRoutes)
 app.use("/style",styleRoutes)
 app.use("/roles",roleRoutes)
-app.use("/users",userRoutes)
+app.use("/user",userRoutes)
 app.use("/suppliers",supplierRoutes)//3
 app.use("/categories",categoryRoutes)//4
 app.use("/outfits",outfitRoutes)//5

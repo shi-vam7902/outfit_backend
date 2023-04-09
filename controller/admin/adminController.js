@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const generateToken = require('../../util/token/generateToken');
 const authTokenModel = require('../../model/authTokenModel');
 const generatePublicKey = require('../../util/generatePublicKey')
-
+const mailer = require('../../util/mailer');
 //add admin
 exports.AddAdmin = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
@@ -163,8 +163,8 @@ exports.LoginAdmin = (req, res) => {
                                 } else {
                                     return res.status(200).json({
                                         message: "Admin Login successfully",
-                                        token:refreshToken
-                                       
+                                        token: refreshToken
+
                                     })
                                 }
                             })
@@ -186,4 +186,69 @@ exports.LoginAdmin = (req, res) => {
             }
         }
     })
+}
+
+//admin Forget password
+// exports.forgetPassword = (req,res) => {       
+//     adminModel.findOne({email:req.body.email}).populate('role').exec((err,data)=>{
+//         console.log(data);
+//     })
+// }
+exports.forgetPassword = (req, res) => {
+
+    adminModel.findOne({ email: req.body.email }, (err, data) => {
+        console.log(data);
+        if (err) {
+            res.status(500).json({
+                msg: "Error In Generating Otp"
+            })
+        } else {
+            var otp = Math.floor((Math.random() * 1000000) + 1).toString();
+
+            adminModel.findOneAndUpdate({ email: data.email }, { otp: otp }, (err, data) => {
+                if (err) {
+                    res.status(500).json({
+                        msg: "Error In Update Otp"
+                    })
+                } else {
+                    mailer.sendOtp(data.email, otp);
+                    res.status(200).json({
+                        msg: "otp send to your mail",
+                    })
+                }
+            })
+        }
+    })
+}
+// Admin Password Change
+
+exports.ChangePassword =  (req, res) => {
+    newPassword = req.body.newPassword;
+    confirmPassword = req.body.confirmPassword;
+    otp = req.body.otp;
+    if (newPassword == confirmPassword) {
+     adminModel.findOneAndUpdate({ otp: otp },{password:newPassword}, (err, data) => {
+            if(err){
+                res.status(500).json({
+                    msg: "Error In Reset Password"
+                })
+            }else{
+                if(data != null){
+                res.status(200).json({
+                    msg: "Password Reset Successfully",
+                    data: data
+                })
+                }else{
+                    res.status(401).json({
+                        msg: "Entered OTP IS Incorrect",
+                        
+                    })
+                }
+            }
+        })
+    }else{
+        res.status(401).json({
+            msg: "Confirm Password Not Matched",
+        })
+    }
 }

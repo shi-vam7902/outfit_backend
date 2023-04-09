@@ -26,6 +26,9 @@ const AdminModel = new schema({
     },
     status:{
         type: String,
+    },
+    otp:{
+        type: Number
     }
 },
 {
