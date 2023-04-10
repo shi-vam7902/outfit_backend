@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const addressController = require('../../controller/shared/addressController')
-
+const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
  
 router.post("/add",addressController.addAddress)
 router.put("/updateadd/:id",addressController.updateAddressbyId)

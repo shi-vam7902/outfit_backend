@@ -4,6 +4,7 @@ const sizeController = require('../../controller/shared/sizeController')
 
 const validate = require('../../middleware/zodMiddleware')
 const sizeValidation = require('../../util/shared/sizeValidationUtil')
+const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 
 router.post("/size",validate(sizeValidation),sizeController.createSize)
 router.get("/size",sizeController.getAllSize)

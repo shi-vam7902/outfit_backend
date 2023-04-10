@@ -4,6 +4,7 @@ const patternController = require('../../controller/shared/patternController');
 
 const validate = require('../../middleware/zodMiddleware')
 const patternValidation = require('../../util/shared/patternValidationUtil')
+const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 
 router.post("/pattern",validate(patternValidation),patternController.CreatePattern)
 router.get("/pattern",patternController.GetAllPatterns)

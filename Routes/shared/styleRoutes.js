@@ -4,6 +4,7 @@ const styleController = require('../../controller/shared/styleController');
 
 const validate = require('../../middleware/zodMiddleware')
 const styleValidation = require('../../util/shared/styleValidationUtil')
+const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 
 router.post("/style",validate(styleValidation),styleController.CreateStyle)
 router.get("/style",styleController.GetAllStyles)

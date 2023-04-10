@@ -44,8 +44,8 @@ const sendOtp = async (to, otp) => {
     const options = {
         from: 'amit.royal223344@gmail.com',
         to: to,
-        subject: 'Change Password ',
-        html: '<button>' + otp + '</button>',
+        subject: 'Your OTP for verification',
+        html: `Your OTP for verification is <b>${otp}</b>.`
     }
 
     transporter2.sendMail(options, (err, info) => {

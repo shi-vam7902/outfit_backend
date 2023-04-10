@@ -4,6 +4,7 @@ const generateToken = require('../../util/token/generateToken');
 const authTokenModel = require('../../model/authTokenModel');
 const generatePublicKey = require('../../util/generatePublicKey')
 const mailer = require('../../util/mailer');
+const otpGenerator = require('otp-generator')
 //add admin
 exports.AddAdmin = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
@@ -203,7 +204,7 @@ exports.forgetPassword = (req, res) => {
                 msg: "Error In Generating Otp"
             })
         } else {
-            var otp = Math.floor((Math.random() * 1000000) + 1).toString();
+            const otp = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false, expiresIn: 1*1 });
 
             adminModel.findOneAndUpdate({ email: data.email }, { otp: otp }, (err, data) => {
                 if (err) {
@@ -222,31 +223,54 @@ exports.forgetPassword = (req, res) => {
 }
 // Admin Password Change
 
-exports.ChangePassword =  (req, res) => {
+exports.ChangePassword = (req, res) => {
     newPassword = req.body.newPassword;
     confirmPassword = req.body.confirmPassword;
     otp = req.body.otp;
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(newPassword, salt);
     if (newPassword == confirmPassword) {
-     adminModel.findOneAndUpdate({ otp: otp },{password:newPassword}, (err, data) => {
-            if(err){
+        adminModel.findOneAndUpdate({ otp: otp }, { password: hash}, (err, data) => {
+            if (err) {
                 res.status(500).json({
                     msg: "Error In Reset Password"
                 })
-            }else{
-                if(data != null){
-                res.status(200).json({
-                    msg: "Password Reset Successfully",
-                    data: data
-                })
-                }else{
+            } else {
+                if (data != null || data != undefined) {
+
+                    const token = generateToken.generateToken(data);
+                    const obj = {
+                        token: token,
+                        user: data._id,
+                        secret: "secret",
+                        publicKey: generatePublicKey.generatePublicKey(16)
+    
+                    }
+                    const tokenData = new authTokenModel(obj);
+                    tokenData.save((err, data) => {
+                        if (err) {
+                            res.status(500).json({
+                                msg: "Error in Rest Password"
+                            })
+                        } else {
+    
+                            res.status(200).json({
+                                msg: "Password Reset Successfully",
+                                token: token
+                            })
+                        }
+                    })
+
+                   
+                } else {
                     res.status(401).json({
                         msg: "Entered OTP IS Incorrect",
-                        
+
                     })
                 }
             }
         })
-    }else{
+    } else {
         res.status(401).json({
             msg: "Confirm Password Not Matched",
         })

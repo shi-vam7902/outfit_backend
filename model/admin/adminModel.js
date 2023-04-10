@@ -28,7 +28,7 @@ const AdminModel = new schema({
         type: String,
     },
     otp:{
-        type: Number
+        type: String
     }
 },
 {
