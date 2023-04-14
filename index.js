@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+require('dotenv').config()
 
 //routes 
 const sizeRoutes = require('./Routes/shared/sizeRoutes')

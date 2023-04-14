@@ -230,7 +230,7 @@ exports.ChangePassword = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(newPassword, salt);
     if (newPassword == confirmPassword) {
-        adminModel.findOneAndUpdate({ otp: otp }, { password: hash}, (err, data) => {
+        adminModel.findOneAndUpdate({ otp: otp }, { password: hash}).populate('role').exec( (err, data) => {
             if (err) {
                 res.status(500).json({
                     msg: "Error In Reset Password"
