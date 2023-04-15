@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const roleController = require('../roleController/roleController')
+const roleController = require('../controller/roleController')
 //const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 
 router.post("/addrole",roleController.addrole)
