@@ -11,7 +11,8 @@ router.get("/admin", tokenMiddleware.tokenMiddleware, AdminController.getAllAdmi
 router.get("/admin/:id", tokenMiddleware.tokenMiddleware, AdminController.getAdminById)
 router.delete("/admin/:id", tokenMiddleware.tokenMiddleware, AdminController.deleteAdmin)
 router.get("/admin/:id", tokenMiddleware.tokenMiddleware, AdminController.UpdateAdmin)
-router.get("/ad/login",AdminController.LoginAdmin)
+router.post("/ad/login",AdminController.LoginAdmin)
 router.post("/adm/forgetPassword",AdminController.forgetPassword)
 router.post("/admC/changepassword",AdminController.ChangePassword)
+
 module.exports = router;
