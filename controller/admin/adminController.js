@@ -37,7 +37,7 @@ exports.AddAdmin = (req, res) => {
                 const tokenData = new authTokenModel(obj);
                 tokenData.save((err, data) => {
                     if (err) {
-                        res.status(500).json({
+                        res.status(401).json({
                             msg: "Error in Adding Admin"
                         })
                     } else {
@@ -135,11 +135,11 @@ exports.UpdateAdmin = (req, res) => {
 }
 //login Admin
 exports.LoginAdmin = (req, res) => {
+    
     adminModel.findOne({ email: req.body.email }).populate("role").exec((err, data) => {
         if (err) {
             return res.status(400).json({
-                message: err.message,
-
+                message: err.message
             })
         } else {
             if (data) {
@@ -195,6 +195,7 @@ exports.LoginAdmin = (req, res) => {
 //         console.log(data);
 //     })
 // }
+//Forget password
 exports.forgetPassword = (req, res) => {
 
     adminModel.findOne({ email: req.body.email }, (err, data) => {
