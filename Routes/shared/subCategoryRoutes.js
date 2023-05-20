@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const subCategoryController = require('../../controller/shared/subCategoryController')
-router.post("/subcat",subCategoryController.addSubCategory)
+const validate = require('../../middleware/zodMiddleWare')
+const subCategoryValidation = require('../../util/shared/subCategoryValidation')
+
+router.post("/subcat",validate.validate(subCategoryValidation),subCategoryController.addSubCategory)
 router.put("/subcat/:id",subCategoryController.updateSubCategorybyId)
 router.get("/subcat",subCategoryController.getAllSubCategories)
 router.get("/subcat/:id",subCategoryController.getAllSubCategoriesById)

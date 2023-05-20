@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const customerFeedBackController = require("../../controller/customer/customerFeedBackController");
-router.post("/feedback", customerFeedBackController.addCustomerFeedBack);
+const validate = require('../../middleware/zodMiddleWare')
+const customerFeedBackValidation = require('../../util/customer/customerFeedBackValidation')
+router.post("/feedback", validate.validate(customerFeedBackValidation),customerFeedBackController.addCustomerFeedBack);
 router.put(
   "/feedback/:id",
   customerFeedBackController.updateCustomerFeedBackbyId

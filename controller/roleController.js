@@ -57,6 +57,7 @@ exports.updateRolebyId = (req, res) => {
         message: "Some thing went wrong",
       });
     } else {
+      console.log(data);
       if (data != null || data != undefined) {
         res.status(200).json({
           message: "Role Updated",
@@ -74,7 +75,7 @@ exports.getRoleById = (req, res) => {
       });
     } else {
       res.status(200).json({
-        message: "Feedback retrieve successfully",
+        message: "role retrieve successfully",
         data: data,
       });
     }

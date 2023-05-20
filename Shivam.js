@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require('cors')
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3002;
 const mongoose = require("mongoose");
 app.use(express.json())
 app.use(cors())
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 //routes 
 const sizeRoutes = require('./Routes/shared/sizeRoutes')
 const orderRoutes = require('./Routes/shared/orderRoutes')
-const brandRoutes = require('./Routes/shared/brandRoutes')
+const brandRoutes = require('./Routes/shared/brandRoutes')  
 const colorsRoutes = require('./Routes/shared/colorsRoutes')
 const materialRoutes = require('./Routes/shared/materialRoutes')
 const occasionRoutes = require('./Routes/shared/occasionRoutes')
@@ -72,6 +72,6 @@ mongoose.connect('mongodb+srv://root:root@cluster0.qzotymx.mongodb.net/outfits',
         console.log("Database Not Connected..");
     } else {
         console.log("Database Connected..");
-    }
+    }   
 })
 //amit bhai->mongodb+srv://amit:Amit1324@cluster0.sxuwjh9.mongodb.net/outfits?retryWrites=true&w=majority
