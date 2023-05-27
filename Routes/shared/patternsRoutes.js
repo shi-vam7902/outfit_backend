@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const patternController = require('../../controller/shared/patternController');
 
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const patternValidation = require('../../util/shared/patternValidationUtil')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

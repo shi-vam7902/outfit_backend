@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const customerFeedBackController = require("../../controller/customer/customerFeedBackController");
-const validate = require("../../middleware/zodMiddleWare");
+const validate = require("../../middleware/ZodMiddleWare");
 const customerFeedBackValidation = require("../../util/customer/customerFeedBackValidation");
 router.post(
   "/feedback",

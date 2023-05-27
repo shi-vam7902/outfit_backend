@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const addressController = require('../../controller/shared/addressController')
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const addressValdiation = require('../../util/shared/addressValidation')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 router.post("/address",validate(addressValdiation),addressController.addAddress)

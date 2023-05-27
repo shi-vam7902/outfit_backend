@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const orderController = require('../../controller/shared/orderController');
 
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const orderValidation = require('../../util/shared/orderValidationUtil')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

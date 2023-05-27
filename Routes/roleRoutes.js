@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const validate = require('../middleware/zodMiddleWare')
+const validate = require('../middleware/ZodMiddleWare')
 const rolevalidation = require('../util/roleValidation')
 const roleController = require('../controller/roleController')
 const  tokenMiddleware  = require('../middleware/tokenMiddleware')

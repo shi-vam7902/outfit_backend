@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const categoryController = require('../../controller/shared/categoryController')
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const categoryValidation = require('../../util/shared/categoryValidation')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

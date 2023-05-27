@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const brandController = require('../../controller/shared/brandController');
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const brandValidation = require('../../util/shared/brandValidationUtil')
 
 router.post("/brand",validate(brandValidation),brandController.CreateBrand)

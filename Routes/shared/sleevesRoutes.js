@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const sleeveController = require('../../controller/shared/sleevesController');
 
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const sleeveValidation = require('../../util/shared/sleevesValidationUtil')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

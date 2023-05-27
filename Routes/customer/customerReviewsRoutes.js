@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const customerReviewController = require('../../controller/customer/customerReviewController')
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const customerReviewValidation = require('../../util/customer/customerReviewValidaiton')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 router.post("/review",validate(customerReviewValidation),customerReviewController.addCustomerReview)

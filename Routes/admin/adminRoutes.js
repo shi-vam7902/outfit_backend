@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const AdminValidation = require('../../util/admin/AdminValidationUtil')
-const validate = require('../../middleware/zodMiddleWare')
+const validate = require('../../middleware/ZodMiddleWare')
 const AdminController = require('../../controller/admin/adminController');
 const tokenMiddleware = require('../../middleware/tokenMiddleware');
 
