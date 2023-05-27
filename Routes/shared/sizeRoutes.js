@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const sizeController = require('../../controller/shared/sizeController')
 
-const validate = require('../../middleware/zodMiddleware')
+const validate = require('../../middleware/zodMiddleWare')
 const sizeValidation = require('../../util/shared/sizeValidationUtil')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

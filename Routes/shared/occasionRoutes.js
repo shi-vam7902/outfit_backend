@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const occasionController = require('../../controller/shared/occasionController');
 
-const validate = require('../../middleware/zodMiddleware')
+const validate = require('../../middleware/zodMiddleWare')
 const occasionValidation = require('../../util/shared/occasionValidationUtil')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

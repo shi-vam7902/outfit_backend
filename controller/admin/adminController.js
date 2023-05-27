@@ -6,6 +6,7 @@ const generatePublicKey = require('../../util/generatePublicKey')
 const mailer = require('../../util/mailer');
 const otpGenerator = require('otp-generator')
 //add admin
+
 exports.AddAdmin = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);

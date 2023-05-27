@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const styleController = require('../../controller/shared/styleController');
 
-const validate = require('../../middleware/zodMiddleware')
+const validate = require('../../middleware/zodMiddleWare')
 const styleValidation = require('../../util/shared/styleValidationUtil')
 const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 

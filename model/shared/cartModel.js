@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const cartSchema = new Schema(
   {
-<<<<<<< HEAD
-=======
     
->>>>>>> 3885e22d83d69fd1abb0b644c896dc4920e8b11b
     userId: 
       {
         type: Schema.Types.ObjectId,
