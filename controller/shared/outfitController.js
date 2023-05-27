@@ -1,4 +1,7 @@
 const outfitSchema = require("../../model/shared/outfitModel");
+const path = require('path')
+const imageModel = require('../../model/shared/imageModel')
+
 exports.addOutfit = (req, res) => {
   const outfits = new outfitSchema(req.body);
   outfits.save((err, data) => {
@@ -12,8 +15,11 @@ exports.addOutfit = (req, res) => {
     }
   });
 };
+
+
+
 exports.getAllOutfits = (req, res) => {
-  outfitSchema.find((err, data) => {
+  outfitSchema.find().populate('image').exec((err, data) => {
     if (err) {
       res.status(401).json({
         message: "SomeThing Went Wrong",

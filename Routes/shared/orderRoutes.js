@@ -2,8 +2,11 @@ const express = require('express')
 const router = express.Router()
 const orderController = require('../../controller/shared/orderController');
 
+const validate = require('../../middleware/zodMiddleware')
+const orderValidation = require('../../util/shared/orderValidationUtil')
+const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
 
-router.post("/order",orderController.CreateOrder)
+router.post("/order",validate(orderValidation), orderController.CreateOrder)
 router.get("/order",orderController.GetAllOrders)
 router.get("/order/:id",orderController.GetOrderById)
 router.delete("/order/:id",orderController.deleteOrder)

@@ -52,7 +52,7 @@ exports.GetStyleById = (req, res) => {
 }
 //update style
 exports.UpdateStyle = (req, res) => {
-        styleModel.findById(req.params.id,req.body,(err,data)=>{
+        styleModel.findByIdAndUpdate(req.params.id,req.body,(err,data)=>{
                 if (err) {
                         res.status(401).json({
                             message:err.message

@@ -4,7 +4,7 @@ const userSchema = new Schema(
   {
     roleId: {
       type: Schema.Types.ObjectId,
-      ref: "roles",
+      ref: "role",
     },
     firstName: {
       type: String,
@@ -12,8 +12,11 @@ const userSchema = new Schema(
     lastName: {
       type: String,
     },
-    emailId: {
+    email: {
       type: String,
+      required: true,
+      unique: true,
+      trim: true
     },
     password: {
       type: String,
