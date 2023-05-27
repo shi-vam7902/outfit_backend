@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx grunt build",
-    "start": "nodmon Shivam.js"
+    "start": "nodemon Shivam.js"
   },
   "author": "Shivam Shah",
   "license": "ISC",
