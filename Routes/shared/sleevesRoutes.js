@@ -4,7 +4,7 @@ const sleeveController = require('../../controller/shared/sleevesController');
 
 const validate = require('../../middleware/ZodMiddleWare')
 const sleeveValidation = require('../../util/shared/sleevesValidationUtil')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/sleeve",validate(sleeveValidation),sleeveController.CreateSleeve)
 router.get("/sleeve",sleeveController.GetAllSleeves)

@@ -3,7 +3,7 @@ const router = express.Router();
 const AdminValidation = require('../../util/admin/AdminValidationUtil')
 const validate = require('../../middleware/ZodMiddleWare')
 const AdminController = require('../../controller/admin/adminController');
-const tokenMiddleware = require('../../middleware/tokenMiddleware');
+const tokenMiddleware = require('../../middleware/TokenMiddleWare');
 
 
 router.post("/admin", validate(AdminValidation), AdminController.AddAdmin);

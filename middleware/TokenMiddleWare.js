@@ -1,4 +1,4 @@
-const tokenUtil = require('../util/token/generateToken')
+const tokenUtil = require('../util/Token/generateToken')
 
 const tokenMiddleware = (req, res, next) => {
     const token = req.headers.authorization;

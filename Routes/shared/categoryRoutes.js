@@ -3,7 +3,7 @@ const router = express.Router()
 const categoryController = require('../../controller/shared/categoryController')
 const validate = require('../../middleware/ZodMiddleWare')
 const categoryValidation = require('../../util/shared/categoryValidation')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/category",categoryController.addCategory)
 router.put("/category/:id",categoryController.updateCategorybyId)

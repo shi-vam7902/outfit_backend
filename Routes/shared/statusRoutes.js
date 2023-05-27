@@ -3,7 +3,7 @@ const router = express.Router()
 const statusController = require('../../controller/shared/statusController')
 const validate = require('../../middleware/ZodMiddleWare')
 const statusValidation = require('../../util/shared/statusValidation')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/status",validate(statusValidation),statusController.addStatus)
 router.put("/status/:id",statusController.updateStatusbyId)

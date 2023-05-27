@@ -1,6 +1,6 @@
 const adminModel = require('../../model/admin/adminModel');
 const bcrypt = require('bcrypt');
-const generateToken = require('../../util/token/generateToken');
+const generateToken = require('../../util/Token/generateToken');
 const authTokenModel = require('../../model/authTokenModel');
 const generatePublicKey = require('../../util/generatePublicKey')
 const mailer = require('../../util/mailer');

@@ -4,7 +4,7 @@ const orderController = require('../../controller/shared/orderController');
 
 const validate = require('../../middleware/ZodMiddleWare')
 const orderValidation = require('../../util/shared/orderValidationUtil')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/order",validate(orderValidation), orderController.CreateOrder)
 router.get("/order",orderController.GetAllOrders)

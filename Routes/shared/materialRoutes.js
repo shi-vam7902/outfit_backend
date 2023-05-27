@@ -4,7 +4,7 @@ const materialController = require('../../controller/shared/materialController')
 
 const validate = require('../../middleware/ZodMiddleWare')
 const materialValidation = require('../../util/shared/materialValidationUtil')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/material",validate(materialValidation),materialController.CreateMaterial)
 router.get("/material",materialController.GetAllMaterials)

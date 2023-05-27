@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const supplierController = require('../../controller/supplier/supplierController')
-const tokenmiddleware = require('../../middleware/tokenMiddleware')
+const tokenmiddleware = require('../../middleware/TokenMiddleWare')
 
 router.post("/addsup",supplierController.addSupplier)
 router.put("/updatesup/:id",tokenmiddleware.tokenMiddleware,supplierController.updateSupplierbyId)

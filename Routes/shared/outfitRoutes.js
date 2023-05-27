@@ -3,7 +3,7 @@ const router = express.Router()
 const outfitController = require('../../controller/shared/outfitController')
 const validate = require('../../middleware/ZodMiddleWare')
 const outfitValidation = require('../../util/shared/outfitValidation')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/outfit",validate(outfitValidation),outfitController.addOutfit)
 router.put("/outfit/:id",outfitController.updateOutfitbyId)

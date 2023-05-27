@@ -4,7 +4,7 @@ const colorController = require('../../controller/shared/colorsController');
 
 const validate = require('../../middleware/ZodMiddleWare')
 const colorValidation = require('../../util/shared/colorValidationUtil')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/color",validate(colorValidation),colorController.CreateColor)
 router.get("/color",colorController.GetAllColors)

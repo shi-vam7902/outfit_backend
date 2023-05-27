@@ -1,5 +1,5 @@
 const userSchema = require("../../model/customer/userModel");
-const generateToken = require("../../util/token/generateToken");
+const generateToken = require("../../util/Token/generateToken");
 const mailer = require('../../util/mailer');
 const bcrypt = require('bcrypt');
 const authTokenModel = require("../../model/authTokenModel");

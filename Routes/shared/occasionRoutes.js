@@ -4,7 +4,7 @@ const occasionController = require('../../controller/shared/occasionController')
 
 const validate = require('../../middleware/ZodMiddleWare')
 const occasionValidation = require('../../util/shared/occasionValidationUtil')
-const  tokenMiddleware  = require('../../middleware/tokenMiddleware')
+const  tokenMiddleware  = require('../../middleware/TokenMiddleWare')
 
 router.post("/occasion",validate(occasionValidation),occasionController.CreateOccasion)
 router.get("/occasion",occasionController.GetAllOccasions)
