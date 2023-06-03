@@ -4,9 +4,9 @@ const userController = require('../../controller/customer/userController')
 const tokenmiddleware = require('../../middleware/TokenMiddleWare')
 
 router.post("/user",userController.addUser)
-router.put("/user/:id",tokenmiddleware.tokenMiddleware,userController.updateUserbyId)
-router.get("/user",tokenmiddleware.tokenMiddleware,userController.getAllUsers)
-router.delete("/user/:id",tokenmiddleware.tokenMiddleware,userController.deleteUserById)
+router.put("/user/:id",userController.updateUserbyId)
+router.get("/user",userController.getAllUsers)
+router.delete("/user/:id",userController.deleteUserById)
 router.get("/us/login",userController.LoginUser)
 
 

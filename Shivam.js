@@ -7,7 +7,7 @@ const PORT = 3002;
 const URI = process.env.URI;
 const mongoose = require("mongoose");
 app.use(express.json());
-app.use(cors());
+app.use(cors());6
 app.use(express.urlencoded({ extended: true }));
 
 //routes
